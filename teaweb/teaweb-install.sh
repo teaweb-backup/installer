@@ -6,7 +6,9 @@ then
 	ARCH=amd64
 fi
 
-VERSION_DATA=`curl -s "http://teaos.cn/services/version"`
+#{"code":200,"message":"","data":{"latest":"0.1.12","hasNew":true}}
+#VERSION_DATA=`curl -s "http://teaos.cn/services/version"`
+VERSION_DATA='{"code":200,"message":"","data":{"latest":"0.1.12","hasNew":true}}'
 if [ "${VERSION_DATA}" = "" ]
 then
 	echo "Failed: Failed to connect teaweb official site"
@@ -48,7 +50,8 @@ then
 fi
 
 echo "Downloading: ${FILE} ..."
-curl -o "${FILE}" "http://dl.teaos.cn/v${VERSION}/${FILE}"
+#curl -o "${FILE}" "http://dl.teaos.cn/v${VERSION}/${FILE}"
+curl -o "${FILE}" "https://github.com/teaweb-backup/assets/releases/download/teaweb-${VERSION}/${FILE}"
 unzip -q "${FILE}"
 
 if [ ! -d "/usr/local" ]
