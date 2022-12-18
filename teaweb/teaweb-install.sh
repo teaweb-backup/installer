@@ -51,7 +51,8 @@ fi
 
 echo "Downloading: ${FILE} ..."
 #curl -o "${FILE}" "http://dl.teaos.cn/v${VERSION}/${FILE}"
-curl -o "${FILE}" "https://github.com/teaweb-backup/assets/releases/download/teaweb-${VERSION}/${FILE}"
+#use curl -Lo to follow github 302 redirect, or the file downloaded will be zero-byte
+curl -Lo "${FILE}" "https://github.com/teaweb-backup/assets/releases/download/teaweb-v${VERSION}/${FILE}"
 unzip -q "${FILE}"
 
 if [ ! -d "/usr/local" ]
